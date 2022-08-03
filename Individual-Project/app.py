@@ -64,10 +64,21 @@ def home():
 #basic signs end here
 
 
-@app.route('/recipes', methods = ['GET', 'POST'])
+@app.route('/recipe_submit', methods = ['GET', 'POST'])
 def recipe_submit():
-    return render_template('recipes.html')
+    if request.method == 'POST':
+        try:
+            user_recipe = {"Recipe_name": request.form['recipe_name'], "Publisher_name": request.form['publisher_name'], "Ingredients":request.form['ingredients'], "Instructions": request.form['instructions']}
+            db.child('User_recipes').push(user_recipe)
+            return redirect(url_for('recipes'))
+        except:
+            print("Error, publishing failed, please try again.")
+    return render_template('recipe_submit.html')
 
+
+app.route('/recipes', methods= ['GET', 'POST'])
+def recipes():
+    return render_template('recipes.html')
 
 
 #Code goes above here
