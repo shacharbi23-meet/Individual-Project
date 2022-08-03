@@ -6,6 +6,15 @@
 		<title></title>
 	</head>
 	<body>
+		<div class="column">
+			<form action="/recipe_submit", method="POST">
+				<input type="text" name="recipe_name" placeholder="Recipe name">
+				<input type="text" name="publisher_name" placeholder="Publisher name">
+				<textarea form="share" name="ingedients" rows="9" cols="20" placeholder="Ingedients"></textarea>
+				<textarea form="share" name="instuctions" rows="9" cols="50" placeholder="Instructions"></textarea>
+				<input type="submit" name="submit">
+			</form>
+		</div>
 
 	</body>
 	</html>
